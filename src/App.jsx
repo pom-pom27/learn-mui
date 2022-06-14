@@ -3,17 +3,14 @@ import Feed from "./components/Feed";
 import LeftBar from "./components/Leftbar";
 import Navbar from "./components/Navbar";
 import RightBar from "./components/Rightbar";
+import Add from "./AddButton";
 
 const useStyle = makeStyles((theme) => ({
-  button: {
-    ...theme.successButton,
-    border: 0,
-    borderRadius: 3,
-    height: 48,
-    padding: "0 30px",
-  },
-  wrapper: {
-    border: "1px black solid",
+  root: {},
+  rightBar: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
 }));
 const App = () => {
@@ -21,6 +18,19 @@ const App = () => {
   return (
     <>
       <Navbar />
+
+      <Grid container className={classes.root}>
+        <Grid item md={2} xs={2}>
+          <LeftBar />
+        </Grid>
+        <Grid item md={7} xs={10} className={classes.middleGridItem}>
+          <Feed />
+        </Grid>
+        <Grid item md={3} className={classes.rightBar}>
+          <RightBar />
+        </Grid>
+      </Grid>
+      <Add />
     </>
   );
 };

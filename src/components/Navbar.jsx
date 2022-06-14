@@ -9,7 +9,7 @@ import {
   Badge,
   Avatar,
 } from "@material-ui/core";
-import { Search, Mail, Notifications } from "@material-ui/icons";
+import { Search, Mail, Notifications, Cancel } from "@material-ui/icons";
 import { useState } from "react";
 
 const useStyle = makeStyles((theme) => ({
@@ -40,6 +40,7 @@ const useStyle = makeStyles((theme) => ({
     width: "50%",
     [theme.breakpoints.down("sm")]: {
       display: (props) => (props.openSearch ? "flex" : "none"),
+      width: "60%",
     },
   },
   searchIcon: {
@@ -70,11 +71,17 @@ const useStyle = makeStyles((theme) => ({
     },
     marginRight: theme.spacing(2),
   },
+  cancel: {
+    display: (props) => (props.openSearch ? "block" : "none"),
+  },
 }));
 
 const Navbar = () => {
   const [openSearch, setOpenSearch] = useState(false);
   const classes = useStyle({ openSearch });
+
+  const [searchValue, setSearchValue] = useState("");
+
   return (
     <AppBar position="fixed">
       <Toolbar className={classes.toolbar}>
@@ -93,8 +100,21 @@ const Navbar = () => {
               root: classes.inputRoot,
               input: classes.inputInput,
             }}
+            value={searchValue}
+            onChange={(value) => setSearchValue(value.target.value)}
             inputProps={{ "aria-label": "search" }}
           />
+          <IconButton
+            aria-label="show 4 new mails"
+            color="inherit"
+            className={classes.cancel}
+            onClick={() => {
+              setOpenSearch(false);
+              setSearchValue("");
+            }}
+          >
+            <Cancel />
+          </IconButton>
         </div>
         <div className={classes.icons}>
           <IconButton
