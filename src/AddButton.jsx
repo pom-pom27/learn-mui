@@ -32,7 +32,7 @@ const useStyle = makeStyles((theme) => ({
     right: 20,
   },
   spacer: {
-    paddingBottom: theme.spacing(1),
+    paddingBottom: theme.spacing(2),
   },
   form: {
     display: "flex",
@@ -40,9 +40,7 @@ const useStyle = makeStyles((theme) => ({
     margin: "auto",
     width: "100%",
   },
-  formControl: {
-    marginTop: theme.spacing(2),
-  },
+
   formControlLabel: {
     marginTop: theme.spacing(1),
   },
@@ -91,12 +89,12 @@ const AddButton = () => {
         <Divider />
         <DialogContent>
           <form noValidate className={classes.form}>
-            <FormControl className={classes.formControl}>
+            <FormControl>
               <TextField
                 autoFocus
                 margin="dense"
                 id="name"
-                label="Email Address"
+                label="Title"
                 type="email"
                 fullWidth
                 variant="outlined"
@@ -117,7 +115,6 @@ const AddButton = () => {
                 <MenuItem value="Public">Public</MenuItem>
                 <MenuItem value="Private">Private</MenuItem>
               </TextField>
-              <div className={classes.spacer} />
               <div className={classes.spacer} />
               <FormLabel component="legend">Gender</FormLabel>
               <RadioGroup

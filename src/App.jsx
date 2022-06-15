@@ -3,7 +3,7 @@ import Feed from "./components/Feed";
 import LeftBar from "./components/Leftbar";
 import Navbar from "./components/Navbar";
 import RightBar from "./components/Rightbar";
-import Add from "./AddButton";
+import AddButton from "./AddButton";
 
 const useStyle = makeStyles((theme) => ({
   root: {},
@@ -30,7 +30,7 @@ const App = () => {
           <RightBar />
         </Grid>
       </Grid>
-      <Add />
+      <AddButton />
     </>
   );
 };
